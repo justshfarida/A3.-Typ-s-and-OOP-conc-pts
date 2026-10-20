@@ -41,11 +41,13 @@ Settings:
 
 Each function writes only `arr[0]`, so the measurement reflects the cost of **creating** the array rather than filling it. Timing uses `clock()` from `<time.h>`.
 
-### Results (N = 100,000, Debug build, Windows)
+### Results (100,000 calls per function, Debug build, Windows)
 
-| Allocation | Time (s) |
-|---|---|
-| Static | 0.000 |
-| Stack | 0.032 |
-| Heap | 0.010 |
+| N (ints) | Array size | Static (s) | Stack (s) | Heap (s) |
+|---|---|---|---|---|
+| 1,000 | 4 KB | 0.000 | 0.000 | 0.002 |
+| 10,000 | 40 KB | 0.000 | 0.001 | 0.010 |
+| 50,000 | 200 KB | 0.000 | 0.022 | 0.010 |
+| 100,000 | 400 KB | 0.000 | 0.032 | 0.010 |
 
+`clock()` on Windows has a resolution of about 1 ms, so values of 0.000 and 0.001 mean "too fast to measure precisely".

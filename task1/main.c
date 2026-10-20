@@ -2,7 +2,7 @@
 #include <time.h>
 #include <stdlib.h>
 #define MAX 100000
-#define N 100000
+#define N 50000
 //
 // Created by User on 10/20/2026.
 //
