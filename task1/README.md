@@ -51,3 +51,12 @@ Each function writes only `arr[0]`, so the measurement reflects the cost of **cr
 | 100,000 | 400 KB | 0.000 | 0.032 | 0.010 |
 
 `clock()` on Windows has a resolution of about 1 ms, so values of 0.000 and 0.001 mean "too fast to measure precisely".
+
+
+### Explanation
+
+**Expected order in theory: static ≈ stack < heap.**
+
+- **Static** variables are bound to memory once, before execution begins. Calling the function performs no allocation, so the time is below what `clock()` can measure (about 1 ms resolution on Windows).
+- **Stack-dynamic** variables are allocated on each call, but allocation is normally a single instruction that moves the stack pointer, so it should be almost as fast as static.
+- **Explicit heap-dynamic** variables require `malloc` to find and reserve a free block and `free` to return it. This bookkeeping happens on every call, so the heap is normally the slowest.
