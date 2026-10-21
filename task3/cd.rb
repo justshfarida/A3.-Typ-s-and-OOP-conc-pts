@@ -14,6 +14,7 @@ class CD < LibraryItem
   end
 
   def display_info
+      super
     puts "Genre: #{genre}"
     puts "Tracks: #{track_count}" if track_count
     puts "-" * 30

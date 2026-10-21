@@ -9,3 +9,10 @@ dvd.display_info
 cd   = CD.new("A Day at the Races", "Queen", 1976, "Rock")
 cd.display_info
 puts cd.artist
+
+library=Library.new
+library.add_item(book)
+library.add_item(dvd)
+library.add_item(cd)
+
+library.display_all_items
