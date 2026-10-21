@@ -49,7 +49,7 @@ class Program
     {
         Employee e = new Employee("Aysel", 1000);
         Manager m = new Manager("Rashad", 1000, 500);
-        Employee em = new Manager("Leyla", 1000, 500);  // the key case
+        Employee em = new Manager("Leyla", 1000, 500);  //the key case
 
         Console.WriteLine($"{e.Name}: {e.GetRole()}, salary {e.CalculateSalary()}");
         Console.WriteLine($"{m.Name}: {m.GetRole()}, salary {m.CalculateSalary()}");
