@@ -49,7 +49,8 @@ Leyla: Employee, salary 1500
 
 - **Static binding** is decided at **compile time**, based on the **declared type of the variable**.
 - **Dynamic binding** is decided at **runtime**, based on the **actual type of the object**.
-  The two only give different results when a base-class variable refers to a derived-class object, which is the case for `em` (Leyla).
+
+The two only give different results when a base-class variable refers to a derived-class object, which is the case for `em` (Leyla).
 
 **`virtual` and `override` give dynamic binding.** `CalculateSalary()` is marked `virtual` in `Employee`, which allows derived classes to replace it and tells C# to choose the method at runtime. `Manager` replaces it with `override`. When `em.CalculateSalary()` is called, the program checks the actual object, finds a `Manager`, and runs `Manager`'s version. Leyla therefore correctly receives the bonus: salary **1500**.
 
