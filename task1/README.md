@@ -88,3 +88,19 @@ Normally, allocating a local array on the stack costs a single instruction: the 
 | 100,000 | 400,000 | about 98 |
 
 With N = 100,000, that is about 98 probes × 100,000 calls, or roughly 10 million memory accesses, which explains the 0.032 s result. The stack time grows with the array size because the number of probes does.
+
+
+**Why the heap was faster than expected:**
+
+The heap function frees the block and immediately requests the same size again, so the allocator reuses the same block each time. Only `arr[0]` is touched, so the rest of the block is never accessed. This is close to the best case for `malloc`.
+
+This explains the pattern in the table: the stack cost depends on how many pages are probed, so it grows with the array size, while the heap cost does not, because the heap version touches only one element.
+
+### Conclusion
+
+Static allocation has no per-call cost. Stack allocation is normally almost free but can become expensive for very large arrays on Windows because of stack probing. Heap allocation has a per-call bookkeeping cost and offers flexibility (size chosen at runtime, lifetime controlled by the programmer) in exchange for speed.
+
+### References
+
+- R. W. Sebesta, *Concepts of Programming Languages*, Chapter 5: Names, Bindings, and Scopes (lifetime of variables)
+- Microsoft documentation: `__chkstk`
