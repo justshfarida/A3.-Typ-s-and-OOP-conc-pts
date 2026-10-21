@@ -6,8 +6,18 @@ class Library
   end
 
   def add_item(item)
+    # Only accept objects of LibraryItem or one of its subclasses
+    unless item.is_a?(LibraryItem)
+      puts "Cannot add #{item.inspect}: not a library item"
+      return
+    end
     @items << item
     puts "Added: #{item}"
+  end
+
+  # Adds several items at once, e.g. an array of books
+  def add_items(items)
+    items.each { |item| add_item(item) }
   end
 
   def remove_item(item)

@@ -25,7 +25,7 @@ In both cases, `main.rb` loads the other files through `require_relative`.
 | `dvd.rb` | `DVD`, derived from `LibraryItem` |
 | `cd.rb` | `CD`, derived from `LibraryItem` |
 | `library.rb` | `Library`, which stores and manages a collection of items |
-| `main.rb` | Test code from the assignment, plus a removal demo |
+| `main.rb` | Test code from the assignment, plus adding a list of books and a removal demo |
 
 ### Class design
 
@@ -62,7 +62,8 @@ The test code in the assignment passes the director (Christopher Nolan) and the 
 
 | Method | Purpose |
 |---|---|
-| `add_item(item)` | adds an item to the collection |
+| `add_item(item)` | adds an item to the collection; rejects anything that is not a `LibraryItem` |
+| `add_items(items)` | adds a whole list (array) of items at once |
 | `remove_item(item)` | removes a specific item |
 | `remove_by_title(title)` | finds an item by its title and removes it |
 | `display_item(item)` | displays one item of any type |

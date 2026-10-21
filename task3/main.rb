@@ -11,6 +11,18 @@ cd.display_info
 puts cd.artist
 
 library=Library.new
+
+# Create a list of books and add it to the library in one call
+books = [
+  Book.new("The C Programming Language", "Brian Kernighan", 1978, "Programming", 272),
+  Book.new("Clean Code", "Robert C. Martin", 2008, "Software Engineering", 464),
+  Book.new("1984", "George Orwell", 1949, "Dystopian Fiction", 328)
+]
+library.add_items(books)
+
+# Only library items can be added
+library.add_item("Just a string")
+
 library.add_item(book)
 library.add_item(dvd)
 library.add_item(cd)
