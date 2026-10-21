@@ -16,3 +16,7 @@ library.add_item(dvd)
 library.add_item(cd)
 
 library.display_all_items
+
+# Remove an item and show the updated catalog
+library.remove_by_title("Inception")
+library.display_all_items

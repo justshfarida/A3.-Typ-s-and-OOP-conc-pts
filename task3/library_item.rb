@@ -29,4 +29,3 @@ class LibraryItem
     "Author"
   end
 end
-end
